@@ -19,6 +19,12 @@
 | Isolamento entre inquilinos | Zero vazamento cross-tenant em testes de segurança automatizados + revisão manual de queries |
 | Disponibilidade | Alvo definido no plano operacional (ex.: 99,5%+), com observabilidade desde o MVP pago |
 
+## Interface e design (web)
+
+- **Contrato visual** versionado em `docs/design/` — ver índice em [`docs/design/README.md`](../../docs/design/README.md).
+- Export do **Google Stitch** (HTML/PNG + `manifest.json`) em `docs/design/stitch-reference/`; sincronização: `pnpm run design:sync-stitch` (requer `STITCH_API_KEY`).
+- A SPA (`apps/web`) usa tokens e layouts em `src/styles/stitch-tokens.css` e `mf-layout.css`, alinhados ao `DESIGN-SYSTEM.md` do Stitch.
+
 ## Fora deste documento
 
 Requisitos detalhados: `.specs/features/product-v1/spec.md`. Marcos: `ROADMAP.md`.

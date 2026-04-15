@@ -28,58 +28,59 @@ export function RegisterPage() {
   }
 
   return (
-    <main style={{ maxWidth: 420, margin: "2rem auto", fontFamily: "system-ui" }}>
-      <h1>Cadastro</h1>
-      <form onSubmit={onSubmit} aria-label="Formulário de cadastro">
-        <div style={{ marginBottom: "0.75rem" }}>
-          <label htmlFor="email">E-mail</label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            autoComplete="email"
-            required
-            value={email}
-            onChange={(ev) => setEmail(ev.target.value)}
-            style={{ display: "block", width: "100%", marginTop: 4 }}
-          />
-        </div>
-        <div style={{ marginBottom: "0.75rem" }}>
-          <label htmlFor="password">Senha</label>
-          <input
-            id="password"
-            name="password"
-            type="password"
-            autoComplete="new-password"
-            minLength={8}
-            required
-            value={password}
-            onChange={(ev) => setPassword(ev.target.value)}
-            style={{ display: "block", width: "100%", marginTop: 4 }}
-          />
-        </div>
-        <div style={{ marginBottom: "0.75rem" }}>
-          <label htmlFor="organizationName">Nome da organização</label>
-          <input
-            id="organizationName"
-            name="organizationName"
-            type="text"
-            required
-            value={organizationName}
-            onChange={(ev) => setOrganizationName(ev.target.value)}
-            style={{ display: "block", width: "100%", marginTop: 4 }}
-          />
-        </div>
-        {error ? (
-          <p role="alert" style={{ color: "crimson" }}>
-            {error}
-          </p>
-        ) : null}
-        <button type="submit">Criar conta</button>
-      </form>
-      <p>
-        Já tem conta? <Link to="/login">Entrar</Link>
-      </p>
+    <main className="mf-auth-page">
+      <div className="mf-auth-card">
+        <h1>Cadastro</h1>
+        <form onSubmit={onSubmit} aria-label="Formulário de cadastro">
+          <div className="mf-field">
+            <label htmlFor="email">E-mail</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              autoComplete="email"
+              required
+              value={email}
+              onChange={(ev) => setEmail(ev.target.value)}
+            />
+          </div>
+          <div className="mf-field">
+            <label htmlFor="password">Senha</label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              autoComplete="new-password"
+              minLength={8}
+              required
+              value={password}
+              onChange={(ev) => setPassword(ev.target.value)}
+            />
+          </div>
+          <div className="mf-field">
+            <label htmlFor="organizationName">Nome da organização</label>
+            <input
+              id="organizationName"
+              name="organizationName"
+              type="text"
+              required
+              value={organizationName}
+              onChange={(ev) => setOrganizationName(ev.target.value)}
+            />
+          </div>
+          {error ? (
+            <p className="mf-alert" role="alert">
+              {error}
+            </p>
+          ) : null}
+          <button className="mf-btn-primary" type="submit">
+            Criar conta
+          </button>
+        </form>
+        <p className="mf-auth-footer">
+          Já tem conta? <Link to="/login">Entrar</Link>
+        </p>
+      </div>
     </main>
   );
 }

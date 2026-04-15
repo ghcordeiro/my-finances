@@ -25,6 +25,16 @@ enum SubscriptionStatus {
   incomplete
 }
 
+enum WorkspaceKind {
+  personal
+  business
+}
+
+enum AccountType {
+  checking
+  investment
+}
+
 model User {
   id           String   @id @default(uuid())
   email        String   @unique
@@ -47,6 +57,7 @@ model Organization {
   memberships   Membership[]
   subscriptions Subscription[]
   auditLogs     AuditLog[]
+  workspaces    Workspace[]
 
   @@index([name])
   @@map("organizations")
@@ -130,4 +141,61 @@ model PlanEntitlement {
   createdAt    DateTime @default(now()) @map("created_at")
 
   @@map("plan_entitlements")
+}
+
+model Workspace {
+  id             String        @id @default(uuid())
+  organizationId String        @map("organization_id")
+  kind           WorkspaceKind
+  name           String
+  archivedAt     DateTime?     @map("archived_at")
+  createdAt      DateTime      @default(now()) @map("created_at")
+  updatedAt      DateTime      @updatedAt @map("updated_at")
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Restrict)
+  accounts     Account[]
+
+  @@index([organizationId, archivedAt])
+  @@map("workspaces")
+}
+
+model Account {
+  id             String      @id @default(uuid())
+  organizationId String      @map("organization_id")
+  workspaceId    String      @map("workspace_id")
+  name           String
+  type           AccountType
+  currency       String      @default("BRL")
+  initialBalance Decimal     @default(0) @map("initial_balance") @db.Decimal(18, 2)
+  archivedAt     DateTime?   @map("archived_at")
+  createdAt      DateTime    @default(now()) @map("created_at")
+  updatedAt      DateTime    @updatedAt @map("updated_at")
+
+  workspace     Workspace  @relation(fields: [workspaceId], references: [id], onDelete: Restrict)
+  transfersFrom Transfer[] @relation("TransferFrom")
+  transfersTo   Transfer[] @relation("TransferTo")
+
+  @@index([workspaceId])
+  @@index([organizationId])
+  @@map("accounts")
+}
+
+model Transfer {
+  id             String   @id @default(uuid())
+  organizationId String   @map("organization_id")
+  fromAccountId  String   @map("from_account_id")
+  toAccountId    String   @map("to_account_id")
+  amount         Decimal  @db.Decimal(18, 2)
+  currency       String
+  bookedAt       DateTime @map("booked_at")
+  memo           String?
+  createdAt      DateTime @default(now()) @map("created_at")
+
+  fromAccount Account @relation("TransferFrom", fields: [fromAccountId], references: [id], onDelete: Restrict)
+  toAccount   Account @relation("TransferTo", fields: [toAccountId], references: [id], onDelete: Restrict)
+
+  @@index([organizationId, bookedAt])
+  @@index([fromAccountId])
+  @@index([toAccountId])
+  @@map("transfers")
 }

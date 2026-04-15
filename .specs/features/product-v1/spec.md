@@ -119,6 +119,7 @@ O produto é um **SaaS multi-tenant** em nuvem. Cada **organização (inquilino)
 | RNF-SEC-03 | Conformidade operacional mínima: política de retenção, backup e recuperação documentados (detalhes no plano de operação, não neste spec). | SaaS |
 | RNF-ARC-01 | Motores de importação e parcelamento desacoplados da camada de apresentação. | PRD 4 |
 | RNF-ARC-02 | Stack concreta documentada em ADR (DB gerenciado, storage, filas se houver). | PRD 4 |
+| RNF-UI-01 | A SPA (`apps/web`) segue o **contrato de design** em `docs/design/` (export Stitch, `DESIGN-SYSTEM.md`, tokens CSS). Desvios visuais ou de fluxo face à referência exigem atualização explícita em spec/plano ou registo de desvio motivado no mesmo PR. | Constituição §4–§6 |
 
 ## Critérios de aceite globais (release v1)
 

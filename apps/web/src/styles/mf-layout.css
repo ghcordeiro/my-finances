@@ -1,0 +1,204 @@
+/* Layouts auth + shell — referência Stitch (Digital Vault) */
+
+.mf-app-body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--mf-surface);
+  color: var(--mf-on-surface);
+  font-family: var(--mf-font-body);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.mf-auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: linear-gradient(165deg, var(--mf-surface) 0%, var(--mf-surface-low) 55%, var(--mf-surface) 100%);
+}
+
+.mf-auth-card {
+  width: 100%;
+  max-width: 26rem;
+  padding: 2rem 2rem 1.75rem;
+  background: var(--mf-surface-card);
+  border-radius: var(--mf-radius-md);
+  box-shadow: var(--mf-shadow-ambient);
+}
+
+.mf-auth-card h1 {
+  margin: 0 0 1.25rem;
+  font-family: var(--mf-font-display);
+  font-weight: 700;
+  font-size: 1.75rem;
+  letter-spacing: -0.02em;
+  color: var(--mf-primary);
+}
+
+.mf-field {
+  margin-bottom: 1rem;
+}
+
+.mf-field label {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--mf-on-surface-variant);
+  margin-bottom: 0.35rem;
+}
+
+.mf-field input {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.65rem 0.75rem;
+  font-family: var(--mf-font-body);
+  font-size: 1rem;
+  color: var(--mf-on-surface);
+  background: var(--mf-surface-highest);
+  border: 1px solid transparent;
+  border-radius: var(--mf-radius-sm);
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.mf-field input:focus {
+  border-color: color-mix(in srgb, var(--mf-primary) 40%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--mf-primary) 25%, transparent);
+}
+
+.mf-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 0.25rem;
+  padding: 0.7rem 1rem;
+  font-family: var(--mf-font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  border: none;
+  border-radius: var(--mf-radius-sm);
+  cursor: pointer;
+  background: linear-gradient(135deg, var(--mf-primary) 0%, var(--mf-primary-container) 100%);
+}
+
+.mf-btn-primary:hover {
+  filter: brightness(1.06);
+}
+
+.mf-btn-primary:focus-visible {
+  outline: 2px solid var(--mf-primary-container);
+  outline-offset: 2px;
+}
+
+.mf-auth-footer {
+  margin-top: 1.25rem;
+  font-size: 0.9375rem;
+  color: var(--mf-on-surface-variant);
+}
+
+.mf-auth-footer a {
+  color: var(--mf-primary-container);
+  font-weight: 600;
+  text-underline-offset: 3px;
+}
+
+.mf-alert {
+  margin: 0 0 0.75rem;
+  padding: 0.6rem 0.75rem;
+  font-size: 0.9rem;
+  color: var(--mf-error);
+  background: var(--mf-error-container);
+  border-radius: var(--mf-radius-sm);
+}
+
+/* Shell (área logada) */
+.mf-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--mf-surface);
+}
+
+.mf-shell-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1.25rem;
+  background: color-mix(in srgb, var(--mf-surface-highest) 85%, transparent);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid color-mix(in srgb, var(--mf-outline-variant) 35%, transparent);
+}
+
+.mf-shell-brand {
+  font-family: var(--mf-font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: -0.02em;
+  color: var(--mf-primary);
+}
+
+.mf-workspace-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--mf-secondary);
+  background: color-mix(in srgb, var(--mf-surface-card) 70%, var(--mf-surface-low));
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--mf-outline-variant) 40%, transparent);
+}
+
+.mf-shell-main {
+  flex: 1;
+  max-width: 48rem;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 3rem;
+  box-sizing: border-box;
+}
+
+.mf-shell-main h1 {
+  margin: 0 0 0.5rem;
+  font-family: var(--mf-font-display);
+  font-weight: 700;
+  font-size: 1.75rem;
+  letter-spacing: -0.02em;
+  color: var(--mf-primary);
+}
+
+.mf-shell-panel {
+  margin-top: 1.25rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--mf-surface-low);
+  border-radius: var(--mf-radius-md);
+}
+
+.mf-shell-panel p {
+  margin: 0.5rem 0 0;
+  color: var(--mf-on-surface-variant);
+}
+
+.mf-shell-panel p:first-child {
+  margin-top: 0;
+}
+
+.mf-shell-actions {
+  margin-top: 1.5rem;
+}
+
+.mf-shell-actions a {
+  font-weight: 600;
+  color: var(--mf-primary-container);
+}

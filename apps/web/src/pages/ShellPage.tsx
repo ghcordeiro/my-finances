@@ -21,21 +21,31 @@ export function ShellPage() {
   }, []);
 
   return (
-    <main style={{ maxWidth: 720, margin: "2rem auto", fontFamily: "system-ui" }}>
-      <h1>Dashboard</h1>
-      {error ? (
-        <p role="alert" style={{ color: "crimson" }}>
-          {error}
+    <div className="mf-shell">
+      <header className="mf-shell-header">
+        <span className="mf-shell-brand">My Finances</span>
+        <span className="mf-workspace-pill" title="Seletor de workspace (M1)">
+          Workspace
+        </span>
+      </header>
+      <main className="mf-shell-main">
+        <h1>Dashboard</h1>
+        {error ? (
+          <p className="mf-alert" role="alert">
+            {error}
+          </p>
+        ) : (
+          <p data-testid="shell-welcome">
+            {email ? `Olá, ${email}` : "Carregando…"}
+          </p>
+        )}
+        <section className="mf-shell-panel" aria-label="Resumo M1">
+          <p>Área autenticada — workspaces, contas e transferências em desenvolvimento (M1), alinhadas ao layout Stitch de referência no repositório.</p>
+        </section>
+        <p className="mf-shell-actions">
+          <Link to="/login">Sair (ir para login)</Link>
         </p>
-      ) : (
-        <p data-testid="shell-welcome">
-          {email ? `Olá, ${email}` : "Carregando…"}
-        </p>
-      )}
-      <p>Área autenticada — funcionalidades financeiras em breve (M1).</p>
-      <p>
-        <Link to="/login">Sair (ir para login)</Link>
-      </p>
-    </main>
+      </main>
+    </div>
   );
 }

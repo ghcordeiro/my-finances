@@ -16,7 +16,8 @@
     "db:push": "prisma db push",
     "db:seed": "prisma db seed",
     "db:generate": "prisma generate",
-    "lint": "pnpm --filter @my-finances/api lint"
+    "typecheck": "pnpm --filter @my-finances/api typecheck",
+    "design:sync-stitch": "node scripts/fetch-stitch-reference.mjs"
   },
   "dependencies": {
     "@prisma/client": "^6.6.0"

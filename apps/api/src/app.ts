@@ -17,7 +17,26 @@ function isStripeWebhookUrl(url: string): boolean {
   return path === "/webhooks/stripe" || path.endsWith("/webhooks/stripe");
 }
 
+const DEV_COOKIE_SECRET = "dev-cookie-secret-change-me";
+
+function resolveCookieSecret(): string {
+  const raw = process.env.COOKIE_SECRET;
+  const isProd = process.env.NODE_ENV === "production";
+  const trimmed = typeof raw === "string" ? raw.trim() : "";
+  if (isProd) {
+    if (!trimmed || trimmed === DEV_COOKIE_SECRET || trimmed === "troque-em-producao" || trimmed.length < 32) {
+      throw new Error(
+        "COOKIE_SECRET ausente, trivial ou curto demais em produção (mínimo 32 caracteres).",
+      );
+    }
+    return trimmed;
+  }
+  return trimmed || DEV_COOKIE_SECRET;
+}
+
 export async function buildApp() {
+  const cookieSecret = resolveCookieSecret();
+
   const app = Fastify({
     logger:
       process.env.NODE_ENV === "test"
@@ -54,7 +73,7 @@ export async function buildApp() {
   );
 
   await app.register(cookie, {
-    secret: process.env.COOKIE_SECRET ?? "dev-cookie-secret-change-me",
+    secret: cookieSecret,
   });
 
   await app.register(cors, {

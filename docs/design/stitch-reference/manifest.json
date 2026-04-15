@@ -1,0 +1,52 @@
+{
+  "syncedAt": "2026-04-15T04:44:07.491Z",
+  "stitchProjectTitle": "My Finances Unified Manager",
+  "stitchProjectId": "14496089392956455810",
+  "screens": [
+    {
+      "screenId": "5f91ef71d5b04bbf9cc398acb9555c81",
+      "title": "Gerenciar Workspaces",
+      "slug": "gerenciar-workspaces",
+      "appRouteHint": "/app/workspaces (M1)",
+      "status": null,
+      "htmlPath": "gerenciar-workspaces-5f91ef71.html",
+      "screenshotPath": "gerenciar-workspaces-5f91ef71.png"
+    },
+    {
+      "screenId": "1ee9cea3e5c0471aa51a1aaa4d5bc717",
+      "title": "Transferências e Fluxos",
+      "slug": "transferencias-e-fluxos",
+      "appRouteHint": "/app/transfers (M1)",
+      "status": null,
+      "htmlPath": "transferencias-e-fluxos-1ee9cea3.html",
+      "screenshotPath": "transferencias-e-fluxos-1ee9cea3.png"
+    },
+    {
+      "screenId": "51108684a3314c5fb2cc79b66c2328b6",
+      "title": "Contas do Workspace",
+      "slug": "contas-do-workspace",
+      "appRouteHint": "/app/accounts (M1)",
+      "status": null,
+      "htmlPath": "contas-do-workspace-51108684.html",
+      "screenshotPath": "contas-do-workspace-51108684.png"
+    },
+    {
+      "screenId": "62d1c67602c048f6b7d073ac150c05cc",
+      "title": "Login / Cadastro",
+      "slug": "login-cadastro",
+      "appRouteHint": "/login, /register",
+      "status": null,
+      "htmlPath": "login-cadastro-62d1c676.html",
+      "screenshotPath": "login-cadastro-62d1c676.png"
+    },
+    {
+      "screenId": "4a0662a21100475dbf7ec437ae470720",
+      "title": "Configurações da Organização",
+      "slug": "configuracoes-da-organizacao",
+      "appRouteHint": "/app/settings/organization (M0/M1)",
+      "status": null,
+      "htmlPath": "configuracoes-da-organizacao-4a0662a2.html",
+      "screenshotPath": "configuracoes-da-organizacao-4a0662a2.png"
+    }
+  ]
+}

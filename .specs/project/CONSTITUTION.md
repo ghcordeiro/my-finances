@@ -23,7 +23,12 @@ Leis imutáveis até revisão explícita deste documento. Violações são bugs.
 
 - Requisitos aprovados vivem em `.specs/`; implementação verificável contra IDs de requisito ou critérios de aceite.
 - Conciliação com extratos (ex.: saldo OFX vs. saldo calculado) permanece requisito de integridade nos fluxos de importação de conta corrente.
+- **Interface web:** alterações relevantes de fluxo ou hierarquia visual para requisitos já especificados devem aparecer no **mesmo ciclo** em `.specs/` ou em `docs/design/` (ver `docs/design/README.md`). O pacote Stitch exportado e tokens em `apps/web` são a referência operacional até decisão explícita de desvio.
 
 ## 5. Stack
 
 - Stack concreta (runtime, DB gerenciado, fila, storage) é decisão registrada em **ADR**. Candidatos do PRD permanecem como opções até ADR.
+
+## 6. Documentação de interface
+
+- O repositório mantém **contrato de design** em `docs/design/`: export HTML/PNG do Stitch (`stitch-reference/`), `manifest.json`, `DESIGN-SYSTEM.md` e estilos partilhados na SPA. Features com superfície web citam esse pacote no spec ou plano, ou documentam **desvio** (motivo e escopo).

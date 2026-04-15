@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>My Finances - Secure Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#213145",
+                        "secondary": "#515f74",
+                        "surface-dim": "#cbdbf5",
+                        "secondary-fixed-dim": "#b9c7e0",
+                        "on-tertiary-fixed": "#00201d",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed-dim": "#6bd8cb",
+                        "on-surface": "#0b1c30",
+                        "secondary-container": "#d5e3fd",
+                        "surface-container": "#e5eeff",
+                        "primary-fixed-dim": "#adc7f7",
+                        "on-primary-fixed": "#001b3c",
+                        "primary-fixed": "#d6e3ff",
+                        "outline": "#74777f",
+                        "primary-container": "#1a365d",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#f8f9ff",
+                        "outline-variant": "#c4c6cf",
+                        "on-secondary-container": "#57657b",
+                        "on-error": "#ffffff",
+                        "primary": "#002045",
+                        "on-secondary": "#ffffff",
+                        "on-surface-variant": "#43474e",
+                        "inverse-on-surface": "#eaf1ff",
+                        "surface-container-high": "#dce9ff",
+                        "on-tertiary-fixed-variant": "#005049",
+                        "on-primary-container": "#86a0cd",
+                        "tertiary-container": "#003d37",
+                        "tertiary": "#002522",
+                        "error-container": "#ffdad6",
+                        "background": "#f8f9ff",
+                        "inverse-primary": "#adc7f7",
+                        "tertiary-fixed": "#89f5e7",
+                        "on-tertiary-container": "#3cafa2",
+                        "on-secondary-fixed-variant": "#3a485c",
+                        "surface-variant": "#d3e4fe",
+                        "surface-container-low": "#eff4ff",
+                        "secondary-fixed": "#d5e3fd",
+                        "error": "#ba1a1a",
+                        "surface": "#f8f9ff",
+                        "on-primary-fixed-variant": "#2d476f",
+                        "on-primary": "#ffffff",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-tertiary": "#ffffff",
+                        "on-background": "#0b1c30",
+                        "surface-tint": "#455f88",
+                        "on-secondary-fixed": "#0d1c2f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(211, 228, 254, 0.4);
+            backdrop-filter: blur(12px);
+        }
+        .steel-gradient {
+            background: linear-gradient(135deg, #002045 0%, #1a365d 100%);
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        h1, h2, h3, .brand-text {
+            font-family: 'Manrope', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex items-center justify-center p-4">
+<!-- Auth Shell Suppression: Navigation excluded as per Task requirements (Linear/Transactional) -->
+<div class="w-full max-w-[1100px] grid grid-cols-1 md:grid-cols-2 bg-surface-container-low rounded-xl overflow-hidden border-0">
+<!-- Left Side: Intentional Asymmetry & Messaging -->
+<div class="hidden md:flex flex-col justify-between p-12 bg-primary relative overflow-hidden">
+<!-- Decorative Elements -->
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary-container opacity-20 rounded-full -mr-32 -mt-32"></div>
+<div class="absolute bottom-0 left-0 w-96 h-96 bg-tertiary-container opacity-10 rounded-full -ml-48 -mb-48"></div>
+<div class="relative z-10">
+<div class="flex items-center gap-2 mb-12">
+<span class="material-symbols-outlined text-primary-fixed text-3xl" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+<span class="brand-text text-2xl font-extrabold tracking-tight text-white">My Finances</span>
+</div>
+<h1 class="text-4xl lg:text-5xl font-extrabold text-white leading-tight mb-6">
+                    The Digital Vault for <br/>
+<span class="text-primary-fixed">Your Wealth.</span>
+</h1>
+<p class="text-on-primary-container text-lg max-w-sm leading-relaxed">
+                    Privacy-first financial management designed for clarity, security, and absolute control over your digital assets.
+                </p>
+</div>
+<div class="relative z-10 space-y-6">
+<div class="flex items-start gap-4">
+<div class="p-2 bg-primary-container rounded-lg">
+<span class="material-symbols-outlined text-primary-fixed text-xl">encrypted</span>
+</div>
+<div>
+<h3 class="text-white font-semibold text-sm">End-to-End Encryption</h3>
+<p class="text-on-primary-container text-xs mt-1">Your data is yours alone. We never sell or share your financial history.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="p-2 bg-primary-container rounded-lg">
+<span class="material-symbols-outlined text-primary-fixed text-xl">visibility_off</span>
+</div>
+<div>
+<h3 class="text-white font-semibold text-sm">Zero-Knowledge Architecture</h3>
+<p class="text-on-primary-container text-xs mt-1">Private by design. We cannot access your bank credentials or personal records.</p>
+</div>
+</div>
+</div>
+<!-- Subtle Logo/Image Placeholder -->
+<div class="absolute bottom-12 right-12 opacity-10">
+<img alt="Vault" class="w-32 h-32 object-contain" data-alt="abstract geometric 3D shapes representing security and blockchain technology in deep blue and silver metallic textures" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXBmUil27LBCrsoaovYgUv3NQiEBtcOvfzdaLYjj0JtzCP9hDA_oi1bcRdli5UMXPRZad8XSSkGOnNlkrFFExFMHUfZIevtg7fW8QJMyibOvysNehlrc_vkcPAprgYGNl6w2aiIDNJAylHELacqaFxiMoTBJ0lDKg7EWUsUI6VJzMx3Za80jD9LmShenpdrucHdt0kF2pe8qqnabzTG6VoiW0KK-efUGwFMbbgoGzNt2gnzVsXoWRmUlOpLqeDYUPLlLd9OEGZvjo6"/>
+</div>
+</div>
+<!-- Right Side: Focused Auth Form -->
+<div class="bg-surface-container-lowest p-8 md:p-16 flex flex-col justify-center">
+<div class="max-w-md w-full mx-auto">
+<div class="mb-10">
+<h2 class="text-3xl font-bold tracking-tight text-on-surface mb-2">Welcome Back</h2>
+<p class="text-secondary text-sm">Secure access to your personal vault.</p>
+</div>
+<form class="space-y-6">
+<div class="space-y-1.5">
+<label class="text-xs font-bold uppercase tracking-widest text-secondary flex items-center gap-2" for="email">
+<span class="material-symbols-outlined text-xs">alternate_email</span>
+                            Account Email
+                        </label>
+<input class="w-full bg-surface-container-high border-none focus:ring-1 focus:ring-primary/40 rounded-lg py-3 px-4 text-on-surface placeholder:text-outline/50 transition-all outline-none" id="email" placeholder="name@vault.com" type="email"/>
+</div>
+<div class="space-y-1.5">
+<div class="flex justify-between items-center">
+<label class="text-xs font-bold uppercase tracking-widest text-secondary flex items-center gap-2" for="password">
+<span class="material-symbols-outlined text-xs">lock</span>
+                                Vault Key
+                            </label>
+<a class="text-xs font-medium text-primary hover:underline" href="#">Forgot Key?</a>
+</div>
+<div class="relative">
+<input class="w-full bg-surface-container-high border-none focus:ring-1 focus:ring-primary/40 rounded-lg py-3 px-4 text-on-surface placeholder:text-outline/50 transition-all outline-none" id="password" placeholder="••••••••" type="password"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-outline" type="button">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+</div>
+</div>
+<div class="flex items-center gap-3 py-2">
+<input class="w-4 h-4 rounded-sm border-outline-variant text-primary focus:ring-primary" id="remember" type="checkbox"/>
+<label class="text-sm text-secondary" for="remember">Trust this device for 30 days</label>
+</div>
+<button class="w-full steel-gradient text-white font-bold py-4 rounded-lg shadow-sm hover:opacity-90 active:scale-[0.98] transition-all flex items-center justify-center gap-2" type="submit">
+<span>Sign into Vault</span>
+<span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+</form>
+<div class="mt-8 pt-8 border-t border-surface-container flex flex-col gap-4">
+<button class="w-full bg-surface-container-low text-on-surface-variant font-semibold py-3 rounded-lg flex items-center justify-center gap-3 hover:bg-surface-container-high transition-colors">
+<img alt="Google" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCL1huoDbkDh2aS0MLhfszTTKt1phM-ClN1iLZpcjurXud4UNKnyzQKb55smTh-NlpHDBcQ7NZMvRWcUPEmIaOFwyZ61BHJjl7IBuVpGg-LD7y0JZfWiVJ8mruaU56Jz2ZqWfdhIA9XKqtO7lY5hVro-J1MH5y049WqlUfXiwdZin4Ti4NHEK1YQrIQS64i1lsbux_GCAOiaOullts9Jy1_WuUHQeIV92wNoPcRrxSiFQ4ostWC_Z7ZOdb_n7PQpNilgtW2T86E4eXc"/>
+<span>Continue with Identity Provider</span>
+</button>
+<p class="text-center text-sm text-secondary">
+                        New to My Finances? 
+                        <a class="text-primary font-bold hover:underline" href="#">Create Account</a>
+</p>
+</div>
+<!-- Privacy Footer -->
+<div class="mt-12 flex items-center justify-center gap-6 opacity-40">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">verified_user</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">SECURE</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">shield_person</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">PRIVATE</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">policy</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">GDPR</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Background Subtle Grain -->
+<div class="fixed inset-0 pointer-events-none opacity-[0.03] z-[-1] bg-repeat" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDaz8sqcct_4Wqd1Gs7cE38FrvxgIfWQ3x6t6JQD_k0EKSHRvoMHtHScvIFM0LGxI3v8SdpVKXknYztaj_gkeeJjvSSZsLbAN7Mn1io0j5IvmgXjSfXIm2ki0uY63LzqWQqEKCH8fc4QDfhgVgU9bkBW6WLf3vMZrF8gMghFwCpNs3LlW3sqLdbgXLI0uzqy_YVm96c8RHVWdMosgTJ-ABh5RJ7S_xvu6g33qweuaY4E2NmEmm_5Gont4Lg_JXDHCzLP_zAXetxXdaL');"></div>
+</body></html>

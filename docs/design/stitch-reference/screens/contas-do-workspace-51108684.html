@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#213145",
+                        "secondary": "#515f74",
+                        "surface-dim": "#cbdbf5",
+                        "secondary-fixed-dim": "#b9c7e0",
+                        "on-tertiary-fixed": "#00201d",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed-dim": "#6bd8cb",
+                        "on-surface": "#0b1c30",
+                        "secondary-container": "#d5e3fd",
+                        "surface-container": "#e5eeff",
+                        "primary-fixed-dim": "#adc7f7",
+                        "on-primary-fixed": "#001b3c",
+                        "primary-fixed": "#d6e3ff",
+                        "outline": "#74777f",
+                        "primary-container": "#1a365d",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#f8f9ff",
+                        "outline-variant": "#c4c6cf",
+                        "on-secondary-container": "#57657b",
+                        "on-error": "#ffffff",
+                        "primary": "#002045",
+                        "on-secondary": "#ffffff",
+                        "on-surface-variant": "#43474e",
+                        "inverse-on-surface": "#eaf1ff",
+                        "surface-container-high": "#dce9ff",
+                        "on-tertiary-fixed-variant": "#005049",
+                        "on-primary-container": "#86a0cd",
+                        "tertiary-container": "#003d37",
+                        "tertiary": "#002522",
+                        "error-container": "#ffdad6",
+                        "background": "#f8f9ff",
+                        "inverse-primary": "#adc7f7",
+                        "tertiary-fixed": "#89f5e7",
+                        "on-tertiary-container": "#3cafa2",
+                        "on-secondary-fixed-variant": "#3a485c",
+                        "surface-variant": "#d3e4fe",
+                        "surface-container-low": "#eff4ff",
+                        "secondary-fixed": "#d5e3fd",
+                        "error": "#ba1a1a",
+                        "surface": "#f8f9ff",
+                        "on-primary-fixed-variant": "#2d476f",
+                        "on-primary": "#ffffff",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-tertiary": "#ffffff",
+                        "on-background": "#0b1c30",
+                        "surface-tint": "#455f88",
+                        "on-secondary-fixed": "#0d1c2f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9ff;
+        }
+        .font-headline { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased">
+<!-- Sidebar Navigation -->
+<aside class="hidden md:flex flex-col h-screen w-64 fixed left-0 top-0 bg-slate-50 border-r-0 p-4 gap-2 z-50">
+<div class="flex items-center gap-3 px-2 py-4 mb-4">
+<div class="w-10 h-10 rounded bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined" data-icon="account_balance">account_balance</span>
+</div>
+<div>
+<h2 class="font-black text-slate-900 text-sm">Personal Vault</h2>
+<p class="text-xs text-secondary opacity-70">Personal Context</p>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-500 hover:translate-x-1 transition-transform duration-200 font-medium rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-['Manrope'] text-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-500 hover:translate-x-1 transition-transform duration-200 font-medium rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="workspaces">workspaces</span>
+<span class="font-['Manrope'] text-sm">Workspaces</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 bg-white text-slate-900 font-semibold rounded-lg shadow-sm scale-95 transition-transform duration-100" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance">account_balance</span>
+<span class="font-['Manrope'] text-sm">Accounts</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-500 hover:translate-x-1 transition-transform duration-200 font-medium rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="swap_horiz">swap_horiz</span>
+<span class="font-['Manrope'] text-sm">Transfers</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-500 hover:translate-x-1 transition-transform duration-200 font-medium rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="corporate_fare">corporate_fare</span>
+<span class="font-['Manrope'] text-sm">Org Settings</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-500 hover:translate-x-1 transition-transform duration-200 font-medium rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-['Manrope'] text-sm">Profile</span>
+</a>
+</nav>
+<div class="mt-auto flex flex-col gap-1 border-t border-slate-200 pt-4">
+<button class="w-full text-left px-3 py-2 mb-2 text-primary font-bold text-xs uppercase tracking-widest bg-secondary-container/50 rounded-lg">
+                Switch to Business
+            </button>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-500 hover:translate-x-1 transition-transform duration-200 text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span>Help</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-500 hover:translate-x-1 transition-transform duration-200 text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="md:ml-64 min-h-screen bg-surface">
+<!-- Top App Bar -->
+<header class="sticky top-0 w-full px-6 py-4 bg-slate-50 flex justify-between items-center z-40">
+<div class="flex items-center gap-4">
+<div class="md:hidden">
+<span class="material-symbols-outlined">menu</span>
+</div>
+<h1 class="text-xl font-extrabold text-slate-900 tracking-tight font-headline">Accounts</h1>
+<span class="px-2 py-0.5 bg-secondary-fixed text-on-secondary-fixed text-[10px] font-bold tracking-widest uppercase rounded-sm flex items-center">
+<span class="w-1 h-1 bg-primary rounded-full mr-1.5"></span>
+                    Personal Workspace
+                </span>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-secondary text-sm">search</span>
+<input class="bg-surface-container-low border-none rounded-lg pl-10 pr-4 py-2 text-sm focus:ring-1 focus:ring-primary w-64 transition-all" placeholder="Search accounts..." type="text"/>
+</div>
+<button class="p-2 text-slate-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-slate-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="professional headshot of a smiling middle-aged man in a charcoal suit with clean studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuACcTOcQ1yqYPbh6nNhqGldqWwzdatZo_kDyYmJoogeUmEWn5Z-j0_E3Ytk5yJy2IayVN1R-iAOT1Nylp-LNAWt05TKj6ssZMybfGnGqQ3nwYbMn3V2wSlsTq_ZAYlRUZd2jGgI4n5lKeALvtWrwIvwd_6ArwpDsNahogtSGBOBNui2Ah8YhvzNcAlJo5E0xV8Of9exfOuEDGVIDypdTpNAjI-GFO1Xgyrf851MfwuW7pcFO7vB5TppKKUlGdqqmA97ER3drDlnYpb4"/>
+</div>
+</div>
+</header>
+<div class="p-8 max-w-7xl mx-auto">
+<!-- Summary Header (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+<!-- Main Balance Card -->
+<div class="md:col-span-2 bg-gradient-to-br from-primary to-primary-container p-8 rounded-xl text-on-primary flex flex-col justify-between min-h-[220px] relative overflow-hidden shadow-2xl shadow-primary/10">
+<div class="z-10">
+<p class="text-on-primary-container font-label text-xs uppercase tracking-[0.2em] mb-2">Total Workspace Balance</p>
+<h2 class="text-4xl md:text-5xl font-headline font-bold tracking-tighter">R$ 1.254.890,42</h2>
+</div>
+<div class="flex items-center gap-6 z-10 pt-6 border-t border-white/10">
+<div>
+<p class="text-on-primary-container text-[10px] uppercase tracking-widest mb-1">Liquid Assets</p>
+<p class="text-lg font-headline font-semibold">R$ 450.200,00</p>
+</div>
+<div class="w-px h-10 bg-white/10"></div>
+<div>
+<p class="text-on-primary-container text-[10px] uppercase tracking-widest mb-1">Locked Investments</p>
+<p class="text-lg font-headline font-semibold">R$ 804.690,42</p>
+</div>
+</div>
+<!-- Abstract Background Decor -->
+<div class="absolute -right-10 -bottom-10 w-64 h-64 bg-tertiary-container/10 rounded-full blur-3xl"></div>
+<div class="absolute right-12 top-12 opacity-20">
+<span class="material-symbols-outlined text-8xl" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+</div>
+</div>
+<!-- Action Card -->
+<div class="bg-surface-container-low p-8 rounded-xl border border-outline-variant/10 flex flex-col justify-between">
+<div>
+<h3 class="font-headline font-bold text-lg mb-2">New Account</h3>
+<p class="text-sm text-secondary leading-relaxed">Expand your portfolio by adding a new checking, savings, or investment account.</p>
+</div>
+<button class="w-full bg-primary text-on-primary py-3 rounded font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-primary/20 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+                        Create Account
+                    </button>
+</div>
+</div>
+<!-- Table Section -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/5 overflow-hidden">
+<div class="px-6 py-5 flex justify-between items-center border-b border-surface-container">
+<h3 class="font-headline font-bold text-slate-900">Registered Accounts</h3>
+<div class="flex gap-2">
+<button class="px-3 py-1.5 text-xs font-semibold bg-surface-container-high rounded-sm text-secondary hover:bg-surface-container-highest transition-colors">Export PDF</button>
+<button class="px-3 py-1.5 text-xs font-semibold bg-surface-container-high rounded-sm text-secondary hover:bg-surface-container-highest transition-colors">Filters</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/50">
+<th class="px-6 py-4 text-[11px] font-bold uppercase tracking-widest text-secondary">Account Name</th>
+<th class="px-6 py-4 text-[11px] font-bold uppercase tracking-widest text-secondary text-center">Type</th>
+<th class="px-6 py-4 text-[11px] font-bold uppercase tracking-widest text-secondary text-center">Currency</th>
+<th class="px-6 py-4 text-[11px] font-bold uppercase tracking-widest text-secondary text-right">Current Balance</th>
+<th class="px-6 py-4 text-[11px] font-bold uppercase tracking-widest text-secondary text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-low">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low/30 transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-sm bg-surface-container-highest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<div>
+<p class="font-headline font-bold text-slate-900">Main Checking Account</p>
+<p class="text-xs text-secondary">Banco Itaú Personal</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5 text-center">
+<span class="px-2 py-1 text-[10px] font-bold bg-secondary-container text-on-secondary-container rounded-sm">Current</span>
+</td>
+<td class="px-6 py-5 text-center font-medium text-slate-600">BRL</td>
+<td class="px-6 py-5 text-right font-headline font-bold text-slate-900 tabular-nums">R$ 142.500,00</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-secondary hover:text-primary transition-colors" title="Edit">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+<button class="p-2 text-secondary hover:text-error transition-colors" title="Archive">
+<span class="material-symbols-outlined text-lg">archive</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low/30 transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-sm bg-tertiary-container/20 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined">show_chart</span>
+</div>
+<div>
+<p class="font-headline font-bold text-slate-900">Diversified Equity Fund</p>
+<p class="text-xs text-secondary">BTG Pactual Portfolio</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5 text-center">
+<span class="px-2 py-1 text-[10px] font-bold bg-tertiary-fixed text-on-tertiary-fixed-variant rounded-sm">Investment</span>
+</td>
+<td class="px-6 py-5 text-center font-medium text-slate-600">BRL</td>
+<td class="px-6 py-5 text-right font-headline font-bold text-slate-900 tabular-nums">R$ 804.690,42</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-secondary hover:text-primary transition-colors" title="Edit">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+<button class="p-2 text-secondary hover:text-error transition-colors" title="Archive">
+<span class="material-symbols-outlined text-lg">archive</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low/30 transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-sm bg-surface-container-highest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">savings</span>
+</div>
+<div>
+<p class="font-headline font-bold text-slate-900">Emergency Reserve</p>
+<p class="text-xs text-secondary">NuBank High Yield</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5 text-center">
+<span class="px-2 py-1 text-[10px] font-bold bg-secondary-container text-on-secondary-container rounded-sm">Current</span>
+</td>
+<td class="px-6 py-5 text-center font-medium text-slate-600">BRL</td>
+<td class="px-6 py-5 text-right font-headline font-bold text-slate-900 tabular-nums">R$ 307.700,00</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-secondary hover:text-primary transition-colors" title="Edit">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+<button class="p-2 text-secondary hover:text-error transition-colors" title="Archive">
+<span class="material-symbols-outlined text-lg">archive</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-6 py-4 bg-surface-container-low/20 flex items-center justify-between">
+<p class="text-xs text-secondary font-medium">Showing 3 active accounts</p>
+<div class="flex gap-2">
+<button class="p-1 rounded-sm border border-outline-variant hover:bg-surface-container transition-colors disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="p-1 rounded-sm border border-outline-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Contextual Insight (Bottom Asymmetric Element) -->
+<div class="mt-12 flex flex-col md:flex-row gap-8 items-start">
+<div class="flex-1 bg-surface-container-high/40 p-6 rounded-lg border border-primary/5">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<h4 class="font-headline font-bold text-primary">Workspace Health</h4>
+</div>
+<p class="text-sm text-secondary leading-relaxed mb-4">
+                        Your personal workspace is currently seeing a <span class="text-tertiary font-bold">+2.4%</span> growth month-over-month. Your investment ratio is <span class="text-primary font-bold">64%</span>, which aligns with your Private Wealth targets.
+                    </p>
+<a class="text-xs font-bold text-primary underline underline-offset-4 decoration-primary/30 hover:decoration-primary transition-all" href="#">View Performance Report</a>
+</div>
+<div class="w-full md:w-80 h-48 rounded-lg overflow-hidden relative group">
+<img alt="Financial district" class="w-full h-full object-cover" data-alt="abstract view of modern architecture with clean lines and glass reflections in soft blue and white tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSmXglLic-nC6Juw49X6NWn7amdQZALTp-habwjt9_qnaU8AJpdD_WtYyVTeYPu7pddzP4uj_DypA8DniF_dWzHAt-aH3MrS2ejTXsaO_sH855ttmSjSmdmw_vp7OgWh0SYsSiU46v8fJ52HtHWTYeU6dkNC8ObjPP_PPHkkzlfsE3HeTm8rJptM4VSLkNCeUqTY2Vblo9NQMTg8DCZzB_mlPOquXzQ94-35hjAjonLOJewXIVPZQddz-I5ux934BU9_qBc1oRe5vb"/>
+<div class="absolute inset-0 bg-primary/20 group-hover:bg-primary/10 transition-colors"></div>
+<div class="absolute bottom-4 left-4 right-4">
+<p class="text-white font-headline font-bold text-sm tracking-tight">Market Insight</p>
+<p class="text-white/80 text-[10px] uppercase tracking-widest mt-1">CDI yields reaching peak levels</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Floating Action Button (FAB) - Suppressed as per rule for Details/Transactional but here is "Home" like enough to justify on an aggregate screen? Manual logic: Suppressed on Details, but since this is a list view "Home" for Accounts, we include a minimal version. Wait, rules say ONLY Home/Dashboard. Let's suppress to be safe. -->
+</main>
+<!-- Bottom Navigation (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 bg-slate-50 flex justify-around items-center h-16 z-50 border-t-0 shadow-[0_-4px_20px_rgba(0,0,0,0.03)]">
+<a class="flex flex-col items-center gap-1 text-slate-500" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-medium">Dash</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-900 font-bold border-b-2 border-slate-900 pb-1" href="#">
+<span class="material-symbols-outlined">account_balance</span>
+<span class="text-[10px]">Accounts</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-500" href="#">
+<span class="material-symbols-outlined">swap_horiz</span>
+<span class="text-[10px] font-medium">Transfers</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-500" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-medium">Profile</span>
+</a>
+</nav>
+</body></html>

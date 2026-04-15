@@ -35,7 +35,7 @@ title Diagrama de contêineres — Plataforma M0
 Person(user, "Usuário", "Humano")
 
 Container_Boundary(sys, "My Finances") {
-  Container(web, "Web App", "SPA (ex.: React/Vite)", "UI: cadastro, login, shell autenticado")
+  Container(web, "Web App", "SPA (ex.: React/Vite)", "UI: cadastro, login, shell; design ref. docs/design/stitch-reference/")
   Container(api, "API", "Node.js + Fastify + TypeScript", "REST /v1, auth, tenancy, billing, audit")
   ContainerDb(db, "PostgreSQL", "Relacional", "Usuários, orgs, sessões, assinaturas, audit_logs")
 }
@@ -58,3 +58,4 @@ Checkout direto do usuário ao Stripe (portal self-service) fica para fase poste
 
 - **Worker assíncrono** não aparece no M0 mínimo; webhooks Stripe podem ser tratados na própria API com fila interna ou endpoint dedicado com timeout alto. Se a carga exigir, um contêiner **Worker** será adicionado por ADR posterior.
 - **Motores de domínio** (importação, parcelas) não são contêineres no M0 — permanecem fora do diagrama até M2/M3.
+- **Design system:** contrato visual e exports Stitch em `docs/design/`; ver `docs/design/README.md` e constituição §6.

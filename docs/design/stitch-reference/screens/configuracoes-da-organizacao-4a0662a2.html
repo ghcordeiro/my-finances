@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#213145",
+                        "secondary": "#515f74",
+                        "surface-dim": "#cbdbf5",
+                        "secondary-fixed-dim": "#b9c7e0",
+                        "on-tertiary-fixed": "#00201d",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed-dim": "#6bd8cb",
+                        "on-surface": "#0b1c30",
+                        "secondary-container": "#d5e3fd",
+                        "surface-container": "#e5eeff",
+                        "primary-fixed-dim": "#adc7f7",
+                        "on-primary-fixed": "#001b3c",
+                        "primary-fixed": "#d6e3ff",
+                        "outline": "#74777f",
+                        "primary-container": "#1a365d",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#f8f9ff",
+                        "outline-variant": "#c4c6cf",
+                        "on-secondary-container": "#57657b",
+                        "on-error": "#ffffff",
+                        "primary": "#002045",
+                        "on-secondary": "#ffffff",
+                        "on-surface-variant": "#43474e",
+                        "inverse-on-surface": "#eaf1ff",
+                        "surface-container-high": "#dce9ff",
+                        "on-tertiary-fixed-variant": "#005049",
+                        "on-primary-container": "#86a0cd",
+                        "tertiary-container": "#003d37",
+                        "tertiary": "#002522",
+                        "error-container": "#ffdad6",
+                        "background": "#f8f9ff",
+                        "inverse-primary": "#adc7f7",
+                        "tertiary-fixed": "#89f5e7",
+                        "on-tertiary-container": "#3cafa2",
+                        "on-secondary-fixed-variant": "#3a485c",
+                        "surface-variant": "#d3e4fe",
+                        "surface-container-low": "#eff4ff",
+                        "secondary-fixed": "#d5e3fd",
+                        "error": "#ba1a1a",
+                        "surface": "#f8f9ff",
+                        "on-primary-fixed-variant": "#2d476f",
+                        "on-primary": "#ffffff",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-tertiary": "#ffffff",
+                        "on-background": "#0b1c30",
+                        "surface-tint": "#455f88",
+                        "on-secondary-fixed": "#0d1c2f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .brand-font { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-panel {
+            background: rgba(211, 228, 254, 0.6);
+            backdrop-filter: blur(12px);
+        }
+        .steel-gradient {
+            background: linear-gradient(135deg, #002045 0%, #1a365d 100%);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-slate-50 dark:bg-slate-950 flex flex-col p-4 gap-2 border-r-0 z-40">
+<div class="flex items-center gap-3 px-2 py-4 mb-4">
+<div class="w-10 h-10 rounded-xl steel-gradient flex items-center justify-center text-white shadow-sm">
+<span class="material-symbols-outlined">corporate_fare</span>
+</div>
+<div>
+<p class="font-black text-slate-900 dark:text-slate-100 leading-tight">Personal Vault</p>
+<p class="text-[10px] uppercase tracking-wider text-secondary font-semibold">Personal Context</p>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-500 dark:text-slate-400 font-medium hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded-lg transition-transform duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-500 dark:text-slate-400 font-medium hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded-lg transition-transform duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">workspaces</span>
+<span class="text-sm">Workspaces</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-500 dark:text-slate-400 font-medium hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded-lg transition-transform duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">account_balance</span>
+<span class="text-sm">Accounts</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-500 dark:text-slate-400 font-medium hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded-lg transition-transform duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">swap_horiz</span>
+<span class="text-sm">Transfers</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-semibold rounded-lg shadow-sm scale-95 duration-100" href="#">
+<span class="material-symbols-outlined">corporate_fare</span>
+<span class="text-sm">Org Settings</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-500 dark:text-slate-400 font-medium hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded-lg transition-transform duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-sm">Profile</span>
+</a>
+</nav>
+<div class="mt-auto border-t border-surface-container pt-4 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-500 dark:text-slate-400 font-medium hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded-lg" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="text-sm">Help</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-500 dark:text-slate-400 font-medium hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded-lg" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="text-sm">Logout</span>
+</a>
+<button class="w-full mt-4 py-2 px-4 glass-panel text-primary text-xs font-bold rounded-lg hover:opacity-80 transition-opacity">
+                Switch to Business
+            </button>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="ml-64 flex-1 bg-surface min-h-screen">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-30 bg-slate-50 dark:bg-slate-950 flex justify-between items-center w-full px-8 py-4 border-b-0 tonal shift using bg-slate-100 dark:bg-slate-900">
+<h1 class="text-xl font-bold text-slate-900 dark:text-slate-100 font-['Manrope'] tracking-tight">Org Settings</h1>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex items-center gap-6 mr-8">
+<a class="text-slate-500 dark:text-slate-400 font-medium hover:text-slate-900 dark:hover:text-slate-100 transition-colors" href="#">Dashboard</a>
+<a class="text-slate-500 dark:text-slate-400 font-medium hover:text-slate-900 dark:hover:text-slate-100 transition-colors" href="#">Workspaces</a>
+<a class="text-slate-900 dark:text-white font-bold border-b-2 border-slate-900 dark:border-white pb-1" href="#">Org Settings</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-slate-900 dark:text-slate-100 hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-slate-900 dark:text-slate-100 hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<img alt="User profile" class="w-8 h-8 rounded-full border-2 border-surface-container-high" data-alt="Close-up portrait of a professional man in a dark blazer against a neutral grey studio background, soft cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoDCKgHk0fiX1PzEBn-OyeUs3NhEAHXyFN8ScqxAqNmnh3h-w-3hV1FSoXtrkFqgs6MYLcG316GmKCDkTrXfXEqOQCORQgqPqEOgmkgPD-Q3Md-8iAbnQOEZFwJ_sN4qmbItTwto-OehwH9hsXOavPj0huFfGCDFKRJAHj9P9fsEqAiVlMz9VQo6D6Wl7Ex7CnvK4K-QWIbkdLQDuldVJoLXC2Gs9HERQv1qjtQ9ch3_EWCBkSEh4JmCk4OYHRbXeqIe7NilKtoU7W"/>
+</div>
+</div>
+</header>
+<div class="p-8 max-w-6xl mx-auto space-y-8">
+<!-- Section 1: Org Profile & Subscription (Asymmetric Grid) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Org Name Card -->
+<div class="lg:col-span-7 bg-surface-container-low p-8 rounded-xl relative overflow-hidden">
+<div class="relative z-10">
+<label class="text-[10px] font-bold tracking-[0.1em] text-secondary uppercase mb-2 block">Organization Identity</label>
+<h2 class="text-3xl font-extrabold text-primary mb-6 tracking-tight">Acme Global Wealth</h2>
+<div class="space-y-4 max-w-md">
+<div>
+<label class="text-xs font-semibold text-secondary block mb-1">Organization Name</label>
+<input class="w-full bg-surface-container-lowest border-0 focus:ring-1 focus:ring-primary/40 rounded-lg px-4 py-3 text-on-surface font-medium shadow-sm" type="text" value="Acme Global Wealth"/>
+</div>
+<button class="steel-gradient text-white px-6 py-2.5 rounded-lg text-sm font-semibold shadow-md hover:opacity-90 transition-opacity">
+                                Save Changes
+                            </button>
+</div>
+</div>
+<div class="absolute top-0 right-0 p-8 opacity-10">
+<span class="material-symbols-outlined text-[120px]">corporate_fare</span>
+</div>
+</div>
+<!-- Subscription Card -->
+<div class="lg:col-span-5 bg-tertiary-container text-on-tertiary-container p-8 rounded-xl flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-4">
+<span class="px-3 py-1 bg-tertiary text-white text-[10px] font-black rounded-full tracking-widest uppercase">Premium Plan</span>
+<span class="material-symbols-outlined text-on-tertiary-container">verified</span>
+</div>
+<p class="text-sm font-medium opacity-80 mb-1">Active since January 2024</p>
+<h3 class="text-2xl font-bold text-tertiary">Institutional Vault</h3>
+</div>
+<div class="mt-8 space-y-4">
+<div class="flex items-center gap-2 text-sm">
+<span class="material-symbols-outlined text-lg">check_circle</span>
+<span>Unlimited multi-currency accounts</span>
+</div>
+<div class="flex items-center gap-2 text-sm">
+<span class="material-symbols-outlined text-lg">check_circle</span>
+<span>Advanced audit logging</span>
+</div>
+<button class="w-full bg-surface-container-lowest text-tertiary py-3 rounded-lg font-bold text-sm shadow-sm hover:bg-white transition-colors">
+                            Upgrade to Enterprise
+                        </button>
+</div>
+</div>
+</div>
+<!-- Section 2: Security & Audit (Editorial Layout) -->
+<section class="bg-surface-container-low rounded-xl overflow-hidden">
+<div class="p-8 border-b border-outline-variant/20">
+<h2 class="text-xl font-bold text-primary flex items-center gap-2">
+<span class="material-symbols-outlined">security</span>
+                        Security &amp; Audit Protocols
+                    </h2>
+<p class="text-secondary text-sm mt-2 max-w-2xl">
+                        Your data is protected by the Digital Vault architecture. We employ military-grade AES-256 encryption at rest and TLS 1.3 for all data in transit. 
+                        Our systems are audited quarterly for SOC2 Type II compliance.
+                    </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 divide-x divide-outline-variant/10">
+<div class="p-8">
+<h4 class="text-xs font-bold text-secondary uppercase tracking-widest mb-3">Two-Factor Auth</h4>
+<div class="flex items-center justify-between">
+<span class="text-sm font-semibold text-on-surface">Enforced for all members</span>
+<span class="w-10 h-5 bg-tertiary rounded-full relative flex items-center px-1">
+<span class="w-3 h-3 bg-white rounded-full ml-auto"></span>
+</span>
+</div>
+</div>
+<div class="p-8">
+<h4 class="text-xs font-bold text-secondary uppercase tracking-widest mb-3">Data Residency</h4>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">public</span>
+<span class="text-sm font-semibold text-on-surface">European Union (Frankfurt)</span>
+</div>
+</div>
+<div class="p-8">
+<h4 class="text-xs font-bold text-secondary uppercase tracking-widest mb-3">Session Timeout</h4>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">timer</span>
+<span class="text-sm font-semibold text-on-surface">15 Minutes Inactivity</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Member & Role Management (Bento Style Table) -->
+<section class="space-y-4">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="text-xl font-bold text-primary">Team Management</h2>
+<p class="text-sm text-secondary">Control access levels and manage organization members.</p>
+</div>
+<button class="flex items-center gap-2 bg-primary text-white px-5 py-2.5 rounded-lg text-sm font-semibold">
+<span class="material-symbols-outlined text-lg">person_add</span>
+                        Invite Member
+                    </button>
+</div>
+<div class="bg-surface-container-low rounded-xl overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-high/50">
+<th class="px-8 py-4 text-[10px] font-black uppercase tracking-[0.15em] text-secondary">Member</th>
+<th class="px-8 py-4 text-[10px] font-black uppercase tracking-[0.15em] text-secondary">Role</th>
+<th class="px-8 py-4 text-[10px] font-black uppercase tracking-[0.15em] text-secondary">Status</th>
+<th class="px-8 py-4 text-[10px] font-black uppercase tracking-[0.15em] text-secondary text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y-0">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-high/20 transition-colors">
+<td class="px-8 py-5">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-primary-fixed flex items-center justify-center font-bold text-primary">AD</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Adrian Dalvany</p>
+<p class="text-xs text-secondary">adrian@acme-wealth.com</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-5">
+<span class="px-2 py-1 bg-primary-container text-on-primary-container text-[10px] font-black rounded-sm uppercase tracking-tighter">Owner</span>
+</td>
+<td class="px-8 py-5">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="text-xs font-semibold text-on-surface">Active</span>
+</div>
+</td>
+<td class="px-8 py-5 text-right">
+<button class="text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 (Alternating) -->
+<tr class="bg-surface-container-lowest/40 hover:bg-surface-container-high/20 transition-colors">
+<td class="px-8 py-5">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center font-bold text-secondary">SM</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Sarah Miller</p>
+<p class="text-xs text-secondary">sarah.m@acme-wealth.com</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-5">
+<span class="px-2 py-1 bg-secondary-container text-on-secondary-container text-[10px] font-black rounded-sm uppercase tracking-tighter">Member</span>
+</td>
+<td class="px-8 py-5">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="text-xs font-semibold text-on-surface">Active</span>
+</div>
+</td>
+<td class="px-8 py-5 text-right">
+<button class="text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</div>
+</main>
+</body></html>

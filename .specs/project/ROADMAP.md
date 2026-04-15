@@ -19,6 +19,7 @@ Ordem sugerida para reduzir risco. Cada fase pode virar feature SDD (`spec` → 
 
 - **Workspaces** (PF / PJ) **dentro do tenant**, com isolamento lógico entre workspaces.
 - Contas correntes e investimentos; transferências internas e PF ↔ PJ quando permitido pela regra de negócio.
+- **UI:** fluxos e hierarquia alinhados ao pacote Stitch em `docs/design/stitch-reference/` (ver `manifest.json` e spec M1).
 
 ## M2 — Cartões e motor de faturas
 
@@ -50,4 +51,4 @@ Ordem sugerida para reduzir risco. Cada fase pode virar feature SDD (`spec` → 
 
 ---
 
-**Próximo passo SDD recomendado:** Specify + Plan + Tasks da **M1** (workspaces + núcleo financeiro).
+**Próximo passo SDD recomendado:** aprovar o **plan** da M1 (`.specs/features/m1-workspaces-core/plan.md` + ADRs `docs/adr/0007`–`0008`), depois redigir **`tasks.md`** e Implement.

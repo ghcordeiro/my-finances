@@ -1,0 +1,26 @@
+/**
+ * Tokens alinhados ao projeto Stitch "My Finances Unified Manager"
+ * (north star: The Digital Vault). Ver docs/design/stitch-reference/DESIGN-SYSTEM.md
+ */
+:root {
+  --mf-surface: #f8f9ff;
+  --mf-surface-low: #eff4ff;
+  --mf-surface-high: #dce9ff;
+  --mf-surface-highest: #d3e4fe;
+  --mf-surface-card: #ffffff;
+  --mf-primary: #002045;
+  --mf-primary-container: #1a365d;
+  --mf-on-surface: #0b1c30;
+  --mf-on-surface-variant: #43474e;
+  --mf-secondary: #515f74;
+  --mf-tertiary: #002522;
+  --mf-tertiary-fixed: #89f5e7;
+  --mf-error: #ba1a1a;
+  --mf-error-container: #ffdad6;
+  --mf-outline-variant: #c4c6cf;
+  --mf-font-display: "Manrope", system-ui, sans-serif;
+  --mf-font-body: "Inter", system-ui, sans-serif;
+  --mf-radius-sm: 0.125rem;
+  --mf-radius-md: 0.5rem;
+  --mf-shadow-ambient: 0 12px 32px rgba(11, 28, 48, 0.06);
+}

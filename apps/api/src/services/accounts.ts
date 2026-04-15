@@ -31,6 +31,18 @@ async function computeBalancesForAccounts(
     if (from) balances.set(t.fromAccountId, from.sub(amt));
     if (to) balances.set(t.toAccountId, to.add(amt));
   }
+
+  const postingSums = await prisma.accountImportPosting.groupBy({
+    by: ["accountId"],
+    where: { accountId: { in: ids } },
+    _sum: { amount: true },
+  });
+  for (const row of postingSums) {
+    const cur = balances.get(row.accountId);
+    const add = row._sum.amount ? new Prisma.Decimal(row._sum.amount) : new Prisma.Decimal(0);
+    if (cur) balances.set(row.accountId, cur.add(add));
+  }
+
   return balances;
 }
 

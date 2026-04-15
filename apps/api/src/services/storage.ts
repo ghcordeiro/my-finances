@@ -1,4 +1,4 @@
-import { HeadBucketCommand, S3Client } from "@aws-sdk/client-s3";
+import { HeadBucketCommand, PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import { createHash, randomUUID } from "node:crypto";
 
 const unsafeChars = /[^a-zA-Z0-9._-]+/g;
@@ -22,6 +22,39 @@ export function buildObjectKey(
 ): string {
   const safe = sanitizeFilename(filename);
   return `${organizationId}/_system/${objectUuid}-${safe}`;
+}
+
+/** ADR-0004 / plan M3 #6: chave de objeto por importação. */
+export function buildImportObjectKey(
+  organizationId: string,
+  workspaceId: string,
+  batchId: string,
+  filename: string,
+  objectUuid: string = randomUUID(),
+): string {
+  const safe = sanitizeFilename(filename);
+  return `${organizationId}/workspaces/${workspaceId}/imports/${batchId}/${objectUuid}-${safe}`;
+}
+
+export async function putImportObject(
+  key: string,
+  body: Buffer,
+  contentType?: string,
+): Promise<{ ok: true } | { ok: false; skipped: true }> {
+  const client = getS3Client();
+  const bucket = process.env.S3_BUCKET;
+  if (!client || !bucket) {
+    return { ok: false, skipped: true };
+  }
+  await client.send(
+    new PutObjectCommand({
+      Bucket: bucket,
+      Key: key,
+      Body: body,
+      ContentType: contentType ?? "application/octet-stream",
+    }),
+  );
+  return { ok: true };
 }
 
 export function getS3Client(): S3Client | null {

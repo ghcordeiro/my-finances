@@ -1,6 +1,6 @@
 # Tasks — M1 (workspaces + contas + transferências)
 
-**Estado:** aprovado (2026-04-15) — **Implement M1** em curso; seguir grafo TDAD abaixo até checklist de fecho.
+**Estado:** **M1 encerrado (2026-04-15)** — Implement + checklist de fecho concluídos; próximo marco de produto: **M2** (ver `ROADMAP.md`).
 
 **Rastreio:** [`spec.md`](./spec.md) · [`plan.md`](./plan.md) · ADR [0007](../../../docs/adr/0007-workspace-ledger-domain.md), [0008](../../../docs/adr/0008-api-workspace-scoping.md).
 
@@ -230,11 +230,11 @@ flowchart TD
 
 ## Checklist de fecho M1 (Implement)
 
-- [ ] Todos os pares TDAD acima com testes a verde (`pnpm test` na raiz).
-- [ ] Nenhum requisito M1-CA-01…06 sem tarefa mapeada.
-- [ ] Revisão rápida contra ADR-0008 (404/409/422 estáveis).
-- [ ] Atualizar `STATE.md` do projeto com decisões emergentes (se houver).
+- [x] Todos os pares TDAD acima com testes a verde (`pnpm test` na raiz).
+- [x] Nenhum requisito M1-CA-01…06 sem tarefa mapeada (cobertura em `apps/api/src/__tests__/workspace-*.test.ts`, `tenant-isolation`, `workspace-audit`, `migration-m1`).
+- [x] Revisão rápida contra ADR-0008 (`workspace_not_found` 404; `workspace_limit_exceeded` 409; erros de transferência 404/422 documentados).
+- [x] `STATE.md` / `ROADMAP.md` atualizados no fecho M1.
 
 ---
 
-**Gate Tasks → Implement:** concluído (2026-04-15). **Seguinte:** executar **Implement** tarefa a tarefa (referência SDD `implement.md`), com commits atómicos por par quando possível.
+**Gate Tasks → Implement:** concluído (2026-04-15). **M1 fechado (2026-04-15).** **Seguinte (SDD):** iniciar **M2** por **Specify** em `.specs/features/` (cartões / motor de faturas), conforme `ROADMAP.md`.

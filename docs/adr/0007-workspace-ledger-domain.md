@@ -2,7 +2,7 @@
 
 ## Status
 
-Proposto — 2026-04-15 (Plan M1)
+Aceito — M1 concluído (2026-04-15)
 
 ## Contexto
 

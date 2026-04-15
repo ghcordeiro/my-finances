@@ -114,4 +114,4 @@ O **Plan** de M1 deve mencionar estes ficheiros ao definir rotas (`/app/...`) e 
 
 **Plan (M1):** ver [`plan.md`](./plan.md); ADRs [`0007`](../../../docs/adr/0007-workspace-ledger-domain.md), [`0008`](../../../docs/adr/0008-api-workspace-scoping.md); C4 em [`docs/architecture/c4-m1-workspaces.md`](../../../docs/architecture/c4-m1-workspaces.md).
 
-**Tasks:** [`tasks.md`](./tasks.md) — aguardando **gate Tasks → Implement** (aprovação explícita).
+**Tasks:** [`tasks.md`](./tasks.md) — **M1 encerrado (2026-04-15)** (Implement + checklist + E2E smoke M1-T-009).

@@ -30,3 +30,5 @@
 Requisitos detalhados: `.specs/features/product-v1/spec.md`. Marcos: `ROADMAP.md`.
 
 **Marco M0 (plataforma):** concluído em 2026-04-15 — ver `STATE.md` e código em `apps/api`, `apps/web`.
+
+**Marcos M1–M2:** concluídos em 2026-04-15 (workspaces/contas/transferências; cartões e motor de faturas). **Marco M3 (importação OFX/CSV):** **Plan aprovado** (2026-04-15); **`tasks.md` redigido** (rascunho) — aguarda aprovação gate Tasks → Implement; ver `.specs/features/m3-import-ofx-csv/`.

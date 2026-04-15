@@ -2,6 +2,18 @@
 
 ## Última atualização
 
+- 2026-04-15: **M3 — marco encerrado (API)** — migração `m3_import_ofx_csv_domain`; motores OFX/CSV; `import-process` / `import-apply`; rotas imports + csv-templates; saldo com `AccountImportPosting`; testes Vitest (58) verdes com `pnpm test`; ADR **0011** / **0012** em **Aceito — M3 concluído**; logs estruturados no POST de imports (`importBatchId`, `workspaceId`, `targetAccountId`, contagens). **M3.1** (UI/E2E) mantido em backlog em `tasks.md`. Próximo SDD: **M4** (categorização) quando planeado.
+- 2026-04-15: **M3 — Gate Tasks concluído** — [`.specs/features/m3-import-ofx-csv/tasks.md`](../features/m3-import-ofx-csv/tasks.md) **aprovado** pelo utilizador. **Gate Tasks → Implement:** **autorizado** — executar ondas M3-T / M3-I conforme grafo e checklist de fecho em `tasks.md`.
+- 2026-04-15: **M3 — `tasks.md` redigido** — [`.specs/features/m3-import-ofx-csv/tasks.md`](../features/m3-import-ofx-csv/tasks.md) (TDAD, grafo M3-T/M3-I, checklist fecho).
+- 2026-04-15: **M3 — Gate Plan concluído** — [`.specs/features/m3-import-ofx-csv/plan.md`](../features/m3-import-ofx-csv/plan.md) **aprovado** pelo utilizador; ADR **0011** / **0012** em estado **Aceito — Gate Plan M3**; C4 `docs/architecture/c4-m3-import-ofx-csv.md`. **Tasks** entregues em rascunho (ver entrada imediatamente acima).
+- 2026-04-15: **M3 — Plan redigido (rascunho)** — [`.specs/features/m3-import-ofx-csv/plan.md`](../features/m3-import-ofx-csv/plan.md); ADR **0011** (domínio), **0012** (API); C4 `docs/architecture/c4-m3-import-ofx-csv.md`. **Gate Plan:** aguarda aprovação explícita do utilizador.
+- 2026-04-15: **M3 — Gate Specify concluído** — [`.specs/features/m3-import-ofx-csv/spec.md`](../features/m3-import-ofx-csv/spec.md) **aprovado** pelo utilizador; autorizada fase **Plan** (M3): `plan.md`, ADRs e C4 conforme spec-driven.
+- 2026-04-15: **M2 encerrado; M3 iniciado (Specify)** — checklist de fecho em `m2-cards-billing/tasks.md` marcado; ADR-0009/0010 **Aceito — M2 concluído**; `ROADMAP` M2 como concluído. Novo spec rascunho: [`.specs/features/m3-import-ofx-csv/spec.md`](./../features/m3-import-ofx-csv/spec.md) (importação OFX/CSV, RF-IMP, CA-02). Backlog **M2.1** (UI cartões, E2E, testes CA extras) documentado em `tasks.md` M2.
+- 2026-04-15: **M2 — Implement (API)** — migrações `m2_credit_card_billing` + `scheduled`; domínio `billing-calendar` (Luxon); serviços/rotas cartões, faturas, compras, créditos, antecipação, PATCH pago; `TEST_BILLING_AS_OF`; testes `migration-m2`, `credit-cards-m2`, isolamento cartões.
+- 2026-04-15: **M2 — Tasks** — `tasks.md` (TDAD). Plan aprovado. **Gate Tasks → Implement** concluído.
+- 2026-04-15: **M2 — Plan** — `plan.md`, ADR-0009/0010, C4 `c4-m2-cards-billing.md` (aprovado pelo utilizador).
+- 2026-04-15: **M1 encerrado** — checklist em `m1-workspaces-core/tasks.md` marcado; `ROADMAP.md` M1 como concluído; ADRs `0007`/`0008` em estado **Aceito**; E2E `M1-T-009` (workspaces → contas) em `apps/web/e2e/onboarding.spec.ts`; `pnpm test` + `pnpm test:e2e` verdes (E2E usa portas **3109/5188** via `e2e-serve.mjs` + `VITE_DEV_SERVER_PORT`). Próximo marco SDD: **M2** (Plan → Tasks → Implement).
+- 2026-04-15: **M1-I-009 Web (Stitch-aligned)** — shell com sidebar; rotas `/app` (dashboard), `/app/workspaces`, `/app/workspaces/:id/accounts|transfers`, `/app/organization`; cliente `api.ts` com `X-Organization-Id`, tipos M1 e `ApiError`; tokens/layout existentes (`mf-layout.css`, Stitch tokens).
 - 2026-04-15: **M1 API core (workspaces, contas, transferências, auditoria)** — `POST /v1/auth/register` cria workspace `personal` default; rotas `GET|POST|PATCH /v1/workspaces`, contas aninhadas, `POST /v1/transfers` + `GET .../transfers` (Serializable + retry); testes Vitest M1-T-002…007 + isolamento; webhook Stripe: `current_period_end` via subscription ou primeiro item.
 - 2026-04-15: **Gate Tasks → Implement (M1) concluído** — aprovação explícita de `.specs/features/m1-workspaces-core/tasks.md` pelo utilizador; fase **Implement M1** autorizada (ondas M1-I/M1-T conforme grafo).
 - 2026-04-15: **Auditoria SDD pré-M1 Implement** — brechas identificadas e fixes 1–4 aplicados: `STATE.md` sincronizado; `COOKIE_SECRET` com asserção em produção (`apps/api/src/app.ts`); lint soft-fail removido em favor de `typecheck` real; CI mínimo em `.github/workflows/ci.yml` (Postgres + migrate + typecheck + test).
@@ -43,8 +55,16 @@
 - [x] **Gate Specify (M1):** spec aprovado implicitamente ao avançar para Plan.
 - [x] **Gate Plan (M1):** `plan.md` aprovado; ADRs 0007/0008 aceitos (2026-04-15).
 - [x] **Gate Tasks → Implement (M1):** `tasks.md` aprovado (2026-04-15).
-- [ ] **M1 Implement:** ondas TDAD M1-I-001…M1-I-009 conforme `tasks.md` (verificar estado vs. código; commits atómicos por par quando possível).
-- [ ] (Opcional) Rodar e fixar `pnpm test:e2e` em CI; Playwright + stack `scripts/e2e-serve.mjs`.
+- [x] **M1-I-009** — superfície web M1 (workspaces, contas, transferências, org).
+- [x] **M1 fecho** — checklist tasks + smoke E2E M1-T-009; ADRs 0007/0008 aceitos.
+- [x] **M2:** Gate **Tasks → Implement** (`tasks.md` aprovado).
+- [x] **M2:** fecho de marco (checklist, ADRs 0009/0010, roadmap/spec).
+- [x] **M3:** Gate **Specify** — `.specs/features/m3-import-ofx-csv/spec.md` aprovado (2026-04-15).
+- [x] **M3:** Gate **Plan** — `plan.md` aprovado (2026-04-15); ADR 0011/0012 aceitos para desenvolvimento M3; C4 M3 referenciado no plano.
+- [x] **M3:** Gate **Tasks** — `.specs/features/m3-import-ofx-csv/tasks.md` aprovado (2026-04-15).
+- [x] **M3:** Gate **Tasks → Implement** — `tasks.md` aprovado; fase **Implement M3** autorizada (ondas M3-T/M3-I).
+- [x] **M3:** Implement + checklist de fecho — API M3 concluída (2026-04-15); UI M3.1 em backlog.
+- [ ] (Opcional) Job CI para `pnpm test:e2e` com Postgres + `e2e-serve.mjs` (hoje só API na pipeline).
 
 ## Brechas de auditoria pendentes (pós-fixes 1–4 + 6–7)
 

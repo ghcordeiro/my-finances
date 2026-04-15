@@ -23,4 +23,16 @@ test.describe.serial("T-TEST-013 onboarding web", () => {
     await expect(page).toHaveURL(/\/app$/);
     await expect(page.getByTestId("shell-welcome")).toContainText("Olá");
   });
+
+  test("M1-T-009: smoke workspaces e contas após login", async ({ page }) => {
+    await page.goto("/login");
+    await page.getByLabel("E-mail").fill(email);
+    await page.getByLabel("Senha").fill(password);
+    await page.getByRole("button", { name: "Entrar" }).click();
+    await expect(page).toHaveURL(/\/app$/);
+    await page.locator("aside.mf-sidebar .mf-nav-link[href='/app/workspaces']").click();
+    await expect(page.getByRole("heading", { name: "Workspaces" })).toBeVisible();
+    await page.getByRole("link", { name: "Contas" }).first().click();
+    await expect(page.getByRole("heading", { name: "Contas do workspace" })).toBeVisible();
+  });
 });

@@ -5,6 +5,10 @@ import { dirname, resolve } from "node:path";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 
+/** Portas fora do dev habitual (3000 / 5173) para evitar EADDRINUSE ao correr E2E com stack local. */
+const apiPort = process.env.E2E_API_PORT ?? "3109";
+const webPort = process.env.E2E_WEB_PORT ?? "5188";
+
 function loadEnvFile(filePath) {
   if (!existsSync(filePath)) return;
   const raw = readFileSync(filePath, "utf8");
@@ -51,7 +55,11 @@ function waitHealth(url, timeoutMs) {
 const api = spawn("pnpm", ["--filter", "@my-finances/api", "dev"], {
   cwd: root,
   stdio: "inherit",
-  env: { ...process.env },
+  env: {
+    ...process.env,
+    PORT: apiPort,
+    WEB_ORIGIN: `http://127.0.0.1:${webPort}`,
+  },
 });
 
 let web = null;
@@ -72,13 +80,17 @@ const shutdown = () => {
 process.on("SIGINT", shutdown);
 process.on("SIGTERM", shutdown);
 
-await waitHealth("http://127.0.0.1:3000/health", 90_000);
+await waitHealth(`http://127.0.0.1:${apiPort}/health`, 90_000);
 
-web = spawn(
-  "pnpm",
-  ["--filter", "@my-finances/web", "dev", "--", "--host", "127.0.0.1", "--port", "5173", "--strictPort"],
-  { cwd: root, stdio: "inherit", env: { ...process.env } },
-);
+web = spawn("pnpm", ["--filter", "@my-finances/web", "dev"], {
+  cwd: root,
+  stdio: "inherit",
+  env: {
+    ...process.env,
+    VITE_DEV_PROXY_TARGET: `http://127.0.0.1:${apiPort}`,
+    VITE_DEV_SERVER_PORT: webPort,
+  },
+});
 
 web.on("exit", () => {
   shutdown();
@@ -88,3 +100,5 @@ web.on("exit", () => {
 api.on("exit", (code) => {
   if (code && code !== 0) process.exit(code);
 });
+
+await waitHealth(`http://127.0.0.1:${webPort}/`, 90_000);

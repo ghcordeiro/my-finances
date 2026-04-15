@@ -35,6 +35,14 @@ enum AccountType {
   investment
 }
 
+enum ImportBatchStatus {
+  pending
+  processing
+  completed
+  partial
+  failed
+}
+
 model User {
   id           String   @id @default(uuid())
   email        String   @unique
@@ -44,6 +52,7 @@ model User {
 
   sessions    Session[]
   memberships Membership[]
+  importBatchesCreated ImportBatch[]
 
   @@map("users")
 }
@@ -58,6 +67,9 @@ model Organization {
   subscriptions Subscription[]
   auditLogs     AuditLog[]
   workspaces    Workspace[]
+  csvImportTemplates CsvImportTemplate[]
+  importBatches      ImportBatch[]
+  accountImportPostings AccountImportPosting[]
 
   @@index([name])
   @@map("organizations")
@@ -143,6 +155,20 @@ model PlanEntitlement {
   @@map("plan_entitlements")
 }
 
+enum StatementStatus {
+  open
+  scheduled
+  closed
+  paid
+}
+
+enum StatementLineKind {
+  purchase
+  installment
+  credit
+  adjustment
+}
+
 model Workspace {
   id             String        @id @default(uuid())
   organizationId String        @map("organization_id")
@@ -154,9 +180,99 @@ model Workspace {
 
   organization Organization @relation(fields: [organizationId], references: [id], onDelete: Restrict)
   accounts     Account[]
+  creditCards  CreditCard[]
+  csvImportTemplates CsvImportTemplate[]
+  importBatches      ImportBatch[]
+  accountImportPostings AccountImportPosting[]
 
   @@index([organizationId, archivedAt])
   @@map("workspaces")
+}
+
+model CreditCard {
+  id             String    @id @default(uuid())
+  organizationId String    @map("organization_id")
+  workspaceId    String    @map("workspace_id")
+  name           String
+  currency       String    @default("BRL")
+  creditLimit    Decimal   @map("credit_limit") @db.Decimal(18, 2)
+  closingDay     Int       @map("closing_day")
+  dueDay         Int       @map("due_day")
+  timezone       String    @default("America/Sao_Paulo")
+  archivedAt     DateTime? @map("archived_at")
+  createdAt      DateTime  @default(now()) @map("created_at")
+  updatedAt      DateTime  @updatedAt @map("updated_at")
+
+  workspace         Workspace                 @relation(fields: [workspaceId], references: [id], onDelete: Restrict)
+  statements      CreditCardStatement[]
+  installmentPlans InstallmentPlan[]
+
+  @@index([workspaceId])
+  @@index([organizationId])
+  @@map("credit_cards")
+}
+
+model CreditCardStatement {
+  id             String          @id @default(uuid())
+  organizationId String          @map("organization_id")
+  creditCardId   String          @map("credit_card_id")
+  periodStart    DateTime        @map("period_start")
+  periodEnd      DateTime        @map("period_end")
+  dueAt          DateTime        @map("due_at")
+  status         StatementStatus
+  closedAt       DateTime?       @map("closed_at")
+  paidAt         DateTime?       @map("paid_at")
+  createdAt      DateTime        @default(now()) @map("created_at")
+
+  creditCard CreditCard               @relation(fields: [creditCardId], references: [id], onDelete: Restrict)
+  lines      CreditCardStatementLine[]
+
+  @@index([creditCardId, status])
+  @@index([organizationId])
+  @@map("credit_card_statements")
+}
+
+model InstallmentPlan {
+  id                 String   @id @default(uuid())
+  organizationId     String   @map("organization_id")
+  creditCardId       String   @map("credit_card_id")
+  purchaseAmount     Decimal  @map("purchase_amount") @db.Decimal(18, 2)
+  installmentCount   Int      @map("installment_count")
+  purchasedAt        DateTime @map("purchased_at")
+  merchantDescription String? @map("merchant_description")
+  createdAt          DateTime @default(now()) @map("created_at")
+
+  creditCard CreditCard               @relation(fields: [creditCardId], references: [id], onDelete: Restrict)
+  lines      CreditCardStatementLine[]
+
+  @@index([creditCardId])
+  @@index([organizationId])
+  @@map("installment_plans")
+}
+
+model CreditCardStatementLine {
+  id                 String            @id @default(uuid())
+  organizationId     String            @map("organization_id")
+  statementId        String            @map("statement_id")
+  lineKind           StatementLineKind @map("line_kind")
+  amount             Decimal           @db.Decimal(18, 2)
+  postedAt           DateTime          @map("posted_at")
+  memo               String?
+  installmentPlanId  String?           @map("installment_plan_id")
+  installmentIndex   Int?              @map("installment_index")
+  referencesLineId   String?           @map("references_line_id")
+  metadata           Json?             @db.JsonB
+  createdAt          DateTime          @default(now()) @map("created_at")
+
+  statement        CreditCardStatement  @relation(fields: [statementId], references: [id], onDelete: Restrict)
+  installmentPlan  InstallmentPlan?     @relation(fields: [installmentPlanId], references: [id], onDelete: Restrict)
+  referencesLine   CreditCardStatementLine?  @relation("StatementLineReference", fields: [referencesLineId], references: [id], onDelete: Restrict)
+  referencedBy     CreditCardStatementLine[] @relation("StatementLineReference")
+
+  @@index([statementId])
+  @@index([installmentPlanId])
+  @@index([organizationId])
+  @@map("credit_card_statement_lines")
 }
 
 model Account {
@@ -174,10 +290,85 @@ model Account {
   workspace     Workspace  @relation(fields: [workspaceId], references: [id], onDelete: Restrict)
   transfersFrom Transfer[] @relation("TransferFrom")
   transfersTo   Transfer[] @relation("TransferTo")
+  importBatches       ImportBatch[]
+  accountImportPostings AccountImportPosting[]
 
   @@index([workspaceId])
   @@index([organizationId])
   @@map("accounts")
+}
+
+model CsvImportTemplate {
+  id               String   @id @default(uuid())
+  organizationId   String   @map("organization_id")
+  workspaceId      String?  @map("workspace_id")
+  name             String
+  columnMap        Json     @map("column_map")
+  dateFormat       String   @map("date_format")
+  decimalSeparator String   @map("decimal_separator")
+  timezone         String?
+  createdAt        DateTime @default(now()) @map("created_at")
+  updatedAt        DateTime @updatedAt @map("updated_at")
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Restrict)
+  workspace    Workspace?   @relation(fields: [workspaceId], references: [id], onDelete: Restrict)
+
+  @@index([organizationId])
+  @@index([workspaceId])
+  @@map("csv_import_templates")
+}
+
+model ImportBatch {
+  id               String            @id @default(uuid())
+  organizationId   String            @map("organization_id")
+  workspaceId      String            @map("workspace_id")
+  targetAccountId  String            @map("target_account_id")
+  createdByUserId  String            @map("created_by_user_id")
+  originalFilename String            @map("original_filename")
+  contentSha256    String            @map("content_sha256")
+  byteSize         Int               @map("byte_size")
+  mimeType         String?           @map("mime_type")
+  storageKey       String            @map("storage_key")
+  status           ImportBatchStatus
+  resultSummary    Json?             @map("result_summary")
+  createdAt        DateTime          @default(now()) @map("created_at")
+  completedAt      DateTime?         @map("completed_at")
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Restrict)
+  workspace    Workspace    @relation(fields: [workspaceId], references: [id], onDelete: Restrict)
+  targetAccount Account       @relation(fields: [targetAccountId], references: [id], onDelete: Restrict)
+  createdByUser User         @relation(fields: [createdByUserId], references: [id], onDelete: Restrict)
+  postings     AccountImportPosting[]
+
+  @@index([organizationId])
+  @@index([workspaceId])
+  @@index([targetAccountId])
+  @@index([contentSha256])
+  @@map("import_batches")
+}
+
+model AccountImportPosting {
+  id               String   @id @default(uuid())
+  organizationId   String   @map("organization_id")
+  workspaceId      String   @map("workspace_id")
+  accountId        String   @map("account_id")
+  importBatchId    String   @map("import_batch_id")
+  amount           Decimal  @db.Decimal(18, 2)
+  currency         String
+  bookedAt         DateTime @map("booked_at")
+  memo             String?
+  externalStableId String?  @map("external_stable_id")
+  createdAt        DateTime @default(now()) @map("created_at")
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Restrict)
+  workspace    Workspace    @relation(fields: [workspaceId], references: [id], onDelete: Restrict)
+  account      Account      @relation(fields: [accountId], references: [id], onDelete: Restrict)
+  importBatch  ImportBatch  @relation(fields: [importBatchId], references: [id], onDelete: Restrict)
+
+  @@index([accountId])
+  @@index([importBatchId])
+  @@index([organizationId])
+  @@map("account_import_postings")
 }
 
 model Transfer {

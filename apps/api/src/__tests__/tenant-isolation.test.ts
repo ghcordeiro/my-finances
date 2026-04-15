@@ -66,5 +66,14 @@ describe("T-TEST-006 isolamento CA-00", () => {
       headers: { cookie: cookieA, "x-organization-id": orgA },
     });
     expect(okA.statusCode).toBe(200);
+
+    const wsB = (b.json() as { workspace: { id: string } }).workspace.id;
+    const m1leak = await app.inject({
+      method: "GET",
+      url: `/v1/workspaces/${wsB}/accounts`,
+      headers: { cookie: cookieA, "x-organization-id": orgA },
+    });
+    expect(m1leak.statusCode).toBe(404);
+    expect((m1leak.json() as { error: string }).error).toBe("workspace_not_found");
   });
 });

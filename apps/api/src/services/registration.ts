@@ -37,7 +37,15 @@ export async function registerUserAndOrg(input: RegisterInput) {
       },
     });
 
-    return { user, organization: org };
+    const workspace = await tx.workspace.create({
+      data: {
+        organizationId: org.id,
+        kind: "personal",
+        name: "Pessoal",
+      },
+    });
+
+    return { user, organization: org, workspace };
   });
 
   await appendAudit({
@@ -46,7 +54,11 @@ export async function registerUserAndOrg(input: RegisterInput) {
     action: "auth.register",
     resourceType: "organization",
     resourceId: result.organization.id,
-    metadata: { email: result.user.email },
+    metadata: {
+      email: result.user.email,
+      organizationId: result.organization.id,
+      workspaceId: result.workspace.id,
+    },
   });
 
   return result;

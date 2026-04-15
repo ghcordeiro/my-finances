@@ -50,10 +50,10 @@ describe("T-TEST-008 webhook Stripe idempotente", () => {
       },
     } as unknown as Stripe.Event;
 
-    const payload = Buffer.from(JSON.stringify(event));
+    const json = JSON.stringify(event);
     const secret = process.env.STRIPE_WEBHOOK_SECRET!;
     const header = Stripe.webhooks.generateTestHeaderString({
-      payload,
+      payload: json,
       secret,
     });
 
@@ -65,7 +65,7 @@ describe("T-TEST-008 webhook Stripe idempotente", () => {
         "stripe-signature": header,
         "content-type": "application/json",
       },
-      payload,
+      payload: json,
     });
     expect(first.statusCode).toBe(200);
 
@@ -76,7 +76,7 @@ describe("T-TEST-008 webhook Stripe idempotente", () => {
         "stripe-signature": header,
         "content-type": "application/json",
       },
-      payload,
+      payload: json,
     });
     expect(second.statusCode).toBe(200);
     expect((second.json() as { duplicate?: boolean }).duplicate).toBe(true);

@@ -1,6 +1,6 @@
 # Tasks — M1 (workspaces + contas + transferências)
 
-**Estado:** proposto — aguardando **gate Tasks → Implement** (aprovação explícita de `tasks.md`).
+**Estado:** aprovado (2026-04-15) — **Implement M1** em curso; seguir grafo TDAD abaixo até checklist de fecho.
 
 **Rastreio:** [`spec.md`](./spec.md) · [`plan.md`](./plan.md) · ADR [0007](../../../docs/adr/0007-workspace-ledger-domain.md), [0008](../../../docs/adr/0008-api-workspace-scoping.md).
 
@@ -237,4 +237,4 @@ flowchart TD
 
 ---
 
-**Próximo gate:** após aprovação deste ficheiro, iniciar **Implement** tarefa a tarefa (ver referência SDD `implement.md`), com commits atómicos por par quando possível.
+**Gate Tasks → Implement:** concluído (2026-04-15). **Seguinte:** executar **Implement** tarefa a tarefa (referência SDD `implement.md`), com commits atómicos por par quando possível.

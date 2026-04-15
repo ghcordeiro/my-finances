@@ -5,6 +5,9 @@ import rateLimit from "@fastify/rate-limit";
 import { authRoutes } from "./routes/auth.js";
 import { meRoutes } from "./routes/me.js";
 import { orgRoutes } from "./routes/org.js";
+import { accountsRoutes } from "./routes/accounts.js";
+import { workspacesRoutes } from "./routes/workspaces.js";
+import { transfersRoutes } from "./routes/transfers.js";
 import { stripeWebhookRoutes } from "./routes/webhooks-stripe.js";
 import { requireAuth } from "./plugins/require-auth.js";
 import { requireOrgContext } from "./plugins/require-org.js";
@@ -106,6 +109,9 @@ export async function buildApp() {
 
   await app.register(meRoutes, { prefix: "/v1" });
   await app.register(orgRoutes, { prefix: "/v1" });
+  await app.register(workspacesRoutes, { prefix: "/v1" });
+  await app.register(accountsRoutes, { prefix: "/v1" });
+  await app.register(transfersRoutes, { prefix: "/v1" });
 
   await app.register(
     async (r) => {

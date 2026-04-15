@@ -24,11 +24,16 @@ export async function authRoutes(app: FastifyInstance): Promise<void> {
       return;
     }
     try {
-      const { user, organization } = await registerUserAndOrg(parsed.data);
+      const { user, organization, workspace } = await registerUserAndOrg(parsed.data);
       await createSession(user.id, reply);
       await reply.status(201).send({
         user: { id: user.id, email: user.email },
         organization: { id: organization.id, name: organization.name },
+        workspace: {
+          id: workspace.id,
+          kind: workspace.kind,
+          name: workspace.name,
+        },
       });
     } catch (e: unknown) {
       if (

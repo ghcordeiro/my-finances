@@ -46,6 +46,9 @@ export async function stripeWebhookRoutes(app: FastifyInstance): Promise<void> {
 
     if (event.type === "customer.subscription.updated") {
       const sub = event.data.object as Stripe.Subscription;
+      const periodEndUnix =
+        (sub as unknown as { current_period_end?: number }).current_period_end ??
+        (sub.items?.data[0] as { current_period_end?: number } | undefined)?.current_period_end;
       const orgId =
         typeof sub.metadata?.organization_id === "string"
           ? sub.metadata.organization_id
@@ -76,9 +79,8 @@ export async function stripeWebhookRoutes(app: FastifyInstance): Promise<void> {
                 stripeCustomerId,
                 stripeSubscriptionId: sub.id,
                 status: mapped,
-                currentPeriodEnd: sub.current_period_end
-                  ? new Date(sub.current_period_end * 1000)
-                  : null,
+                currentPeriodEnd:
+                  typeof periodEndUnix === "number" ? new Date(periodEndUnix * 1000) : null,
               },
             });
           }

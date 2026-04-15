@@ -51,4 +51,4 @@ Ordem sugerida para reduzir risco. Cada fase pode virar feature SDD (`spec` → 
 
 ---
 
-**Próximo passo SDD recomendado:** aprovar o **plan** da M1 (`.specs/features/m1-workspaces-core/plan.md` + ADRs `docs/adr/0007`–`0008`), depois redigir **`tasks.md`** e Implement.
+**Próximo passo SDD recomendado (M1):** **Implement** — executar ondas em `.specs/features/m1-workspaces-core/tasks.md` (M1-I/M1-T); ao fechar, atualizar `STATE.md` e o checklist no final de `tasks.md`.

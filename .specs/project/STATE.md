@@ -2,8 +2,10 @@
 
 ## Última atualização
 
+- 2026-04-15: **M1 API core (workspaces, contas, transferências, auditoria)** — `POST /v1/auth/register` cria workspace `personal` default; rotas `GET|POST|PATCH /v1/workspaces`, contas aninhadas, `POST /v1/transfers` + `GET .../transfers` (Serializable + retry); testes Vitest M1-T-002…007 + isolamento; webhook Stripe: `current_period_end` via subscription ou primeiro item.
+- 2026-04-15: **Gate Tasks → Implement (M1) concluído** — aprovação explícita de `.specs/features/m1-workspaces-core/tasks.md` pelo utilizador; fase **Implement M1** autorizada (ondas M1-I/M1-T conforme grafo).
 - 2026-04-15: **Auditoria SDD pré-M1 Implement** — brechas identificadas e fixes 1–4 aplicados: `STATE.md` sincronizado; `COOKIE_SECRET` com asserção em produção (`apps/api/src/app.ts`); lint soft-fail removido em favor de `typecheck` real; CI mínimo em `.github/workflows/ci.yml` (Postgres + migrate + typecheck + test).
-- 2026-04-15: **Gate Plan (M1) concluído** — `plan.md` aprovado; ADRs `0007` e `0008` aceitos. `tasks.md` redigido (TDAD); aguardando **gate Tasks → Implement**.
+- 2026-04-15: **Gate Plan (M1) concluído** — `plan.md` aprovado; ADRs `0007` e `0008` aceitos. `tasks.md` redigido (TDAD).
 - 2026-04-15: **Design Stitch nos docs** — contrato em `docs/design/` (índice `docs/design/README.md`), referência cruzada em `CONSTITUTION.md`, `PROJECT.md`, `product-v1/spec.md` (`RNF-UI-01`), spec M1 e `ROADMAP` M1; C4 M0 com nota na Web App.
 - 2026-04-15: **Plan M1** — `.specs/features/m1-workspaces-core/plan.md`; ADRs `0007`, `0008`; C4 `docs/architecture/c4-m1-workspaces.md`.
 - 2026-04-15: **Specify M1** — `.specs/features/m1-workspaces-core/spec.md` (workspaces PF/PJ, contas, transferências).
@@ -40,8 +42,8 @@
 - [x] **Gate Tasks → Implement:** `tasks.md` aprovado; ondas 0–12 implementadas conforme grafo.
 - [x] **Gate Specify (M1):** spec aprovado implicitamente ao avançar para Plan.
 - [x] **Gate Plan (M1):** `plan.md` aprovado; ADRs 0007/0008 aceitos (2026-04-15).
-- [ ] **Gate Tasks → Implement (M1):** revisar e aprovar `.specs/features/m1-workspaces-core/tasks.md` antes de iniciar implementação.
-- [ ] **M1 Implement:** ondas TDAD M1-I-001…M1-I-009 após gate Tasks.
+- [x] **Gate Tasks → Implement (M1):** `tasks.md` aprovado (2026-04-15).
+- [ ] **M1 Implement:** ondas TDAD M1-I-001…M1-I-009 conforme `tasks.md` (verificar estado vs. código; commits atómicos por par quando possível).
 - [ ] (Opcional) Rodar e fixar `pnpm test:e2e` em CI; Playwright + stack `scripts/e2e-serve.mjs`.
 
 ## Brechas de auditoria pendentes (pós-fixes 1–4 + 6–7)
